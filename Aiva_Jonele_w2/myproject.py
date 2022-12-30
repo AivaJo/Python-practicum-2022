@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+import requests
 
 app=Flask(__name__)
 
@@ -18,19 +19,22 @@ def home():
 def back():
     return "<p>welcome back<p>"
 
-@app.route("/dashboard/<city>")
-def dashboard(city):
-    return render_template("displayWeather.html", city=city)
-
 @app.route("/weather",methods=["POST", "GET"])
 def weather():
+    
     if request.method == "POST":
-        temp=request.form["city"]
-        return redirect(url_for("dashboard",city=temp))
+        name=request.form["city"]
+        return redirect(url_for("dashboard",city=name))
     else:
-        temp=request.args.get("city")
+        name=request.args.get("city")
         return render_template("chooseCity.html")
 
+@app.route("/dashboard/<city>")
+def dashboard(city):
+    url = "https://api.openweathermap.org/data/2.5/weather?&appid=60aa068482d6ddc251ae5f53570ac5fb&units=metric&q="+city
+    response = requests.get(url).json()
+    temperature=response["main"]["temp"]
+    return render_template("displayWeather.html", city=city,response=response,temperature=temperature)
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0", port=80)
+    app.run(debug=True)
