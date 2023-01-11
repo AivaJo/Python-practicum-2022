@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  <h1>{% block title %}This is a weather history report for city {{city2}} for one year {% endblock %}</h1>
+{% endblock %}
+
+{% block content%}
+<body>
+<h5>Type city name</h5>
+<form action="http://127.0.0.1:5000/weather_history" method = "post">
+            <p><Temperature:</p>
+            <p><input type = "text" name="city2" /></p>
+            <p><input type="submit" value="Get weather history"></p>
+</form>
+    <div>
+        <img src="/static/fig1.png">
+    </div>
+        <a class="nav-link active" href= '/history/excelis.xlsx' download="tempexcel">Download Excel</a>
+        <a class="nav-link active" href= '/static/fig1.pdf' download="temppdf">Download PDF</a>
+
+</body>
+{% endblock %}

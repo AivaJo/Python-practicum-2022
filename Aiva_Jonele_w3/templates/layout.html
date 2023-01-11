@@ -1,0 +1,33 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flask</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<!--Navbar-->
+<nav>
+    <a class="nav-link active" href= "{{ url_for('welcome') }}">Welcome</a>
+    <a class="nav-link active" href= "{{ url_for('home') }}">W home</a>
+    <a class="nav-link active" href= "{{ url_for('back') }}">W back</a>
+    <a class="nav-link active" href= "{{ url_for('weather') }}">Weather</a>
+    <a class="nav-link active" href= "{{ url_for('history') }}">Weather history</a>
+    <a class="nav-link active" href= "{{ url_for('home') }}">Send notification</a>
+
+</nav>
+
+<section class="content">
+    <header>
+        <h1>{% block header %}{% endblock %} Python Practicum 2022</h1>
+    </header>
+    
+    {% block content %}{% endblock %}
+</section>
+
+
+<!--Footer-->
+<footer>
+    <p>by Aiva Jonele<a></a>
+
+    </p>
+</footer>
+
+
+

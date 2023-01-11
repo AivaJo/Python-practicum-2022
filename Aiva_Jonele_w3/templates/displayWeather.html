@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  <h1>{% block title %}This is a current weather report for city {{city}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content%}
+
+
+<p>Data flow in json:</p>
+<p>{{response}}</p>
+
+<p>Current temperature is: {{temperature}}</p>
+
+<iframe src="https://api.openweathermap.org/data/2.5/weather?appid=60aa068482d6ddc251ae5f53570ac5fb&units=metric&mode=html&q={{city}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+{% endblock %}
+

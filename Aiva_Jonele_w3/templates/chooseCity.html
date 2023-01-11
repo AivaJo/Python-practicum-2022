@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  <h1>{% block title %}Type city name{% endblock %}</h1>
+{% endblock %}
+
+{% block content%}
+<body>
+        <form action="http://127.0.0.1:5000/weather" method = "post">
+            <p><Temperature:</p>
+            <p><input type = "text" name="city" /></p>
+            <p><input type="submit" value="Get current weather"></p>
+        </form>
+</body>
+{% endblock %}
